@@ -45,6 +45,7 @@ Table of Contents
     * 3.5.6 [Cost](#356-cost)
     * 3.5.7 [Deadline](#357-deadline)
     * 3.5.8 [Proof of Concept](#358-proof-of-concept)
+    * 3.5.9 [Change Management and Release Notes](#359-change-management-and-release-notes)
 * 4 [Verification](#4-verification)
 * 5 [Appendixes](#5-appendixes)
 
@@ -141,6 +142,7 @@ Table of Contents
 - Distinguish external/internal and mandatory/preferred constraints.
 - State constraints as verifiable statements (e.g., “must use FIPS 140-3 validated crypto modules”).
 - Avoid embedding design decisions unless truly binding.
+- Compliance Requirements (Section 3.4) states external obligations; this section translates them and other factors into concrete design/implementation constraints.
 
 ### 2.4 User Characteristics
 💬 _Defines the user groups and the attributes that affect requirements._
@@ -194,8 +196,8 @@ Table of Contents
 ➥ Define UI elements, flows, and standards to be followed (style guides, accessibility guidelines). Include layout constraints, common controls (e.g., help, search), keyboard shortcuts, error/empty-state behavior, and localization. Keep visual designs in a separate UI specification and reference them.
 
 💡 Tips:
-- Consider dividing into Usability and Convenience subsections if extensive.
 - Reference accessibility standards (e.g., WCAG) and platform-specific guidelines.
+- Consider organizing into subcategories for clarity: Usability/Accessibility (input/outputs and dialogs to fit user abstractions, abilities, and expectations), or Convenience.
 
 #### 3.1.2 Hardware Interfaces
 💬 _Details interactions with physical devices and platforms._
@@ -250,6 +252,7 @@ Table of Contents
 💡 Tips:
 - State cryptographic standards and key management expectations.
 - Distinguish between mandatory controls and best practices.
+- Consider organizing into subcategories for clarity: Safety (harmful external outcomes), Confidentiality (disclose data to unauthorized parties), Privacy (private data disclosed without consent), Integrity (data modified without authorization), or Availability (authorized data or resources made available when requested).
 
 #### 3.3.3 Reliability
 💬 _Ability to consistently perform as specified._
@@ -275,7 +278,8 @@ Table of Contents
 ➥ Specify mandated formats, naming conventions, accounting procedures, audit tracing, records retention, and reporting. For each compliance item, reference the source authority and define verifiable criteria.
 
 💡 Tips:
-- Reference regulation authoritative sources and versions.
+- Reference all regulation authoritative sources and versions (e.g., HIPAA, SOX, HTTP/2, OpenID Connect, FHIR/ISO 20022).
+- Include brief legal/licensing notes where relevant (OSS license policy, third-party notices or agreements, model/content licensing).
 - Keep traceability to audits and certification documents.
 
 ### 3.5 Design and Implementation
@@ -284,10 +288,10 @@ Table of Contents
 #### 3.5.1 Installation
 💬 _Ensures the software runs smoothly in its target environments._
 
-➥ Define supported platforms/environments, prerequisites, installation methods, configuration management, and rollback/uninstall requirements.
+➥ Define supported platforms/environments, prerequisites, installation methods, configuration and delivery management, and rollback/uninstall requirements.
 
 💡 Tips:
-- Include automation expectations (e.g., IaC, installer scripts, container images).
+- Detail automation expectations (e.g., continuous delivery, IaC, installer scripts, container images).
 - Specify environment parity requirements for dev/stage/prod.
 
 #### 3.5.2 Distribution
@@ -355,6 +359,11 @@ Table of Contents
 💡 Tips:
 - Keep POCs narrowly focused and measurable. Focus on validation goals, not implementation details.
 - Document learnings and decisions to update relevant sections.
+- 
+#### 3.5.9 Change Management and Release Notes
+💬 _Controls how changes are introduced and communicated._
+
+➥ Define change categories (breaking, additive, bugfix), approval workflow, and required artifacts (changelogs, migration guides, release notes). Specify backward/forward compatibility guarantees, client communication plans, deprecation timelines, and rollout/rollback procedures.
 
 ## 4. Verification
 💬 _Describes how each requirement will be verified to provide objective evidence of compliance._
