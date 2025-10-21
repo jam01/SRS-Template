@@ -143,7 +143,7 @@ Table of Contents
 ### 2.3 Product Constraints
 💬 _Defines limitations or conditions shaping design and implementation._
 
-➥ Describe constraints such as mandated interfaces, technology stacks, regulatory obligations, QoS baselines, hardware limitations, and organizational policies.
+➥ Describe constraints such as mandated interfaces, technology stacks, regulatory obligations, QoS baselines, hardware limitations, AI/ML model families, and organizational policies.
 
 💡 Tips:
 - Distinguish external/internal and mandatory/preferred constraints.
@@ -236,7 +236,7 @@ Requirement Format
 #### 3.1.3 Software Interfaces
 💬 _Defines integrations with other software components and services._
 
-➥ List connected systems (name and version), required services/APIs, data items/messages exchanged, communication styles/protocols, and error/timeout semantics. Identify shared data and ownership. Specify implementation constraints if any (e.g., mandated messaging bus, global data area usage) and reference API/SDK docs.
+➥ List connected systems (name and version), required services/APIs, data items/messages exchanged, communication styles/protocols, and limit/error/timeout semantics. Identify shared data and ownership. Specify implementation constraints if any (e.g., mandated messaging bus, global data area usage) and reference API/SDK docs.
 
 💡 Tips:
 - Capture versioning and backward compatibility policies.
@@ -245,11 +245,12 @@ Requirement Format
 ### 3.2 Functional
 💬 _Specifies the externally observable behaviors and functions the software shall provide._
 
-➥ Organize functional requirements by feature, use case, or service. For each, describe triggers/inputs, processing/logic (at a black-box level), outputs, and error conditions. Use numbered, testable “shall” statements and include acceptance criteria where possible.
+➥ Organize functional requirements by feature, use case, or service. For each, describe triggers/inputs, processing/logic (at a black-box level), outputs, and error conditions. Use numbered, testable “shall” statements and include acceptance criteria where possible. For AI behaviors, define determinism bounds (e.g., temperature), refusal criteria, safety rules, and human review points.
 
 💡 Tips:
 - Avoid design details; focus on behavior and outcomes.
 - Include edge cases and negative scenarios for completeness.
+- For AI features, include fallback behaviors and thresholds for abstention.
 
 📋 Checklist:
 - [ ] Each requirement uses “shall” and is testable?
@@ -283,7 +284,7 @@ Requirement Format
 #### 3.3.2 Security
 💬 _Defines the protection of data, identities, and operations._
 
-➥ Define authentication, authorization, data protection (in transit/at rest), auditing, and privacy requirements. Reference relevant policies/regulations (e.g., ISO 27001, SOC 2, HIPAA, GDPR) and required certifications. Include secure defaults and incident response requirements where applicable.
+➥ Define authentication, authorization, data protection (in transit/at rest), auditing, and privacy requirements. Reference relevant policies/regulations (e.g., ISO 27001, SOC 2, HIPAA, GDPR) and required certifications. Include secure defaults and incident response requirements where applicable. Address both abuse or misuse of authorized functionality and external attack attempts (e.g., injection, data exfiltration, or service compromise).
 
 💡 Tips:
 - State cryptographic standards and key management expectations.
@@ -291,12 +292,12 @@ Requirement Format
 - Consider organizing into subcategories for clarity: Safety (harmful external outcomes), Confidentiality (disclose data to unauthorized parties), Privacy (private data disclosed without consent), Integrity (data modified without authorization), and Availability (authorized data or resources made available when requested).
 
 📝 Note:
-Put security controls and cryptographic requirements here (3.3.2). Place external regulatory obligations and audit rules in 3.4 and cross-reference the concrete controls here.
+Place all technical and operational security controls here (3.3.2). Use 3.4 for regulatory or contractual obligations and audit evidence, 3.1 for interface-level validation and secure communication protocols, and 3.6 for AI/ML-specific runtime protections and data governance requirements, while cross-referencing concrete controls in this section.
 
 #### 3.3.3 Reliability
 💬 _Ability to consistently perform as specified._
 
-➥ Specify reliability metrics and techniques (e.g., MTBF, error budgets, retry/backoff, idempotency, redundancy). Define conditions under which reliability is assessed and any failover behaviors.
+➥ Specify reliability metrics and techniques (e.g., MTBF, error budgets, retry/backoff, idempotency, redundancy). Define conditions under which reliability is assessed and any failover behaviors. Define graceful degradation (e.g., fallback components, cached results, AI/ML deterministic heuristics), timeout/abstain policies, and rollback to previous versions.
 
 💡 Tips:
 - Include durability requirements for stored data where relevant.
@@ -332,7 +333,7 @@ Put security controls and cryptographic requirements here (3.3.2). Place externa
 ### 3.4 Compliance
 💬 _Requirements derived from external standards, regulations, or contracts._
 
-➥ Specify mandated formats, naming conventions, accounting procedures, audit tracing, records retention, and reporting. For each compliance item, reference the source authority and define verifiable criteria.
+➥ Specify mandated formats, naming conventions, accounting procedures, provider/user rights and agreements, audit tracing, records retention, and reporting. For each compliance item, reference the source authority and define verifiable criteria.
 
 💡 Tips:
 - Reference all regulation authoritative sources and versions (e.g., HIPAA, SOX, HTTP/2, OpenID Connect, FHIR/ISO 20022).
@@ -417,13 +418,13 @@ Put security controls and cryptographic requirements here (3.3.2). Place externa
 💡 Tips:
 - Keep POCs narrowly focused and measurable. Focus on validation goals, not implementation details.
 - Document learnings and decisions to update relevant sections.
-- 
+
 #### 3.5.9 Change Management and Release Notes
 💬 _Controls how changes are introduced and communicated._
 
-➥ Define change categories (breaking, additive, bugfix), approval workflow, and required artifacts (changelogs, migration guides, release notes). Specify backward/forward compatibility guarantees, client communication plans, deprecation timelines, and rollout/rollback procedures.
+➥ Define change categories (breaking, additive, bugfix), approval workflow, and required artifacts (changelogs, evaluation summaries, migration guides, release notes). Specify backward/forward compatibility guarantees, client communication plans, deprecation timelines, and rollout/rollback procedures.
 
-#### 3.6 AI/ML
+### 3.6 AI/ML
 💬 This section defines requirements unique to systems incorporating machine learning or data-driven components at their core. These requirements complement functional, quality, and design aspects in preceding sections but address ML-specific lifecycle, data, and ethical considerations.
 
 💡 Tips:
@@ -499,7 +500,7 @@ Handling of missing, synthetic, or augmented data
 ## 4. Verification
 💬 _Describes how each requirement will be verified to provide objective evidence of compliance._
 
-➥ Outline verification methods (test, analysis, inspection, demonstration) and indicate responsibilities and schedules for each requirement or group, preferably in a matrix paralleling Section 3. Define environments, tools, test data, acceptance criteria, and traceability to requirement IDs.
+➥ Outline verification methods (test, canary metrics, analysis, inspection, demonstration) and indicate responsibilities and schedules for each requirement or group, preferably in a matrix paralleling Section 3. Define environments, tools, test data, acceptance criteria, and traceability to requirement IDs.
 
 Traceability (sample)
 
@@ -513,6 +514,7 @@ Traceability (sample)
 - Include both positive and negative tests and address non-functional verification (performance, security, reliability).
 - Keep verification artifacts versioned and linked to CI/CD where possible.
 - Reference applicable verification standards (e.g., IEEE 1012).
+- For AI, reference Model Cards and track eval datasets’ versions and ensure reproducibility of results.
 
 ## 5. Appendixes
 💬 _Optional supporting material that aids understanding without being normative._
