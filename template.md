@@ -63,7 +63,7 @@ Table of Contents
 ### 1.1 Document Purpose
 💬 _Clarifies why this SRS exists, what it contains, and who should use it._
 
-➥ State the intended purpose of the SRS and the primary audiences (e.g., product management, engineering, QA, security, legal/compliance, operations/SRE, executives, vendors/partners). Indicate how different readers should use this document during the lifecycle (planning, design, testing, acceptance).
+➥ State the purpose of the SRS in 2–4 sentences. Name the primary audiences (e.g., product, engineering, QA, security, compliance, operations) and how they use it across planning, design, testing, and acceptance. Emphasize that this document defines what the system must do (requirements), not how it will be built. Reference related documents only when essential (e.g., vision/scope, architecture).
 
 💡 Tips:
 * Keep to 2–4 sentences; defer specifics to later sections. Emphasize that the SRS defines what the system must do, not how it will do it.
@@ -72,7 +72,7 @@ Table of Contents
 ### 1.2 Product Scope
 💬 _Defines the software product’s purpose, boundaries, and relationship to business goals_.
 
-➥ Identify the software system or component covered by this SRS by name and version/release. Describe the product’s primary purpose, key capabilities, and intended outcomes. If the SRS covers only part of a larger system, explicitly state inclusions and exclusions. Connect capabilities to business objectives and strategy. Reference any separate vision/scope documents for additional context.
+➥ Identify the product by name and version/release. In 3–5 sentences, describe its primary purpose, key capabilities, and intended outcomes. Clearly list inclusions and exclusions when this SRS covers part of a larger system. Connect capabilities to business objectives and reference a separate vision/scope document if needed.
 
 💡 Tips:
 * Focus on the “what” and “why”; save the “how” for design sections.
@@ -271,6 +271,7 @@ Requirement Format
 💡 Tips:
 - Use percentiles and concurrency parameters (e.g., p.95 latency at N RPS).
 - Align metrics with performance test plans.
+- Consider organizing into subcategories for clarity: Time (latency, throughput, etc.) and Space (memory, storage, bandwidth, etc.).
 
 #### 3.3.2 Security
 💬 _Defines the protection of data, identities, and operations._
@@ -303,6 +304,24 @@ Put security controls and cryptographic requirements here (3.3.2). Place externa
 - Express availability in terms meaningful to users (e.g., downtime per month).
 - Coordinate with SLOs/SLAs and incident response processes.
 
+#### 3.3.5 Observability
+💬 _Ability to understand system state and behavior in production through telemetry._
+
+➥ Define requirements for logs, metrics, traces, and profiling: events/fields, cardinality limits, sampling, retention, and privacy/PII handling in telemetry. Specify standard labels (e.g., service, version, tenant), correlation/trace IDs propagation, and redaction policies. State SLO-aligned alert rules, dashboards, and ownership. Avoid maintenance-process details (those belong in 3.5.3 Maintainability).
+
+💡 Tips:
+- Make telemetry schemas/versioning explicit and testable.
+- Specify budgets for log volume and metrics cardinality to control cost.
+
+#### 3.3.6 Data Quality
+💬 _Expectations for correctness and fitness of data for use._
+
+➥ Define measurable targets for accuracy, completeness, consistency, timeliness, and validity. Specify validation rules, acceptable error rates, freshness SLAs, deduplication/idempotency expectations, and reconciliation processes. Include lineage, provenance, and schema evolution/versioning requirements with backward-compatibility rules.
+
+💡 Tips:
+- Link quality checks to ingestion/processing stages and recovery steps.
+- Define monitoring and reporting for quality metrics (e.g., dashboards, alerts).
+
 ### 3.4 Compliance
 💬 _Requirements derived from external standards, regulations, or contracts._
 
@@ -324,6 +343,7 @@ Put security controls and cryptographic requirements here (3.3.2). Place externa
 💡 Tips:
 - Detail automation expectations (e.g., continuous delivery, IaC, installer scripts, container images).
 - Specify environment parity requirements for dev/stage/prod.
+- Provide runbooks for scale-out/in and emergency capacity boosts.
 
 #### 3.5.2 Distribution
 💬 _Addresses geographically or organizationally distributed deployments, data, and devices._
