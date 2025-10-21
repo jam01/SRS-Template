@@ -78,7 +78,7 @@ Table of Contents
 * Focus on the “what” and “why”; save the “how” for design sections.
 * Include a simple diagram if it clarifies boundaries within a larger system.
 
-### 1.3 Definitions, Acronyms and Abbreviations
+### 1.3 Definitions, Acronyms, and Abbreviations
 ➥ Help readers understand specialized terms and notation by providing a glossary of domain terms, acronyms, and abbreviations used in the SRS.
 
 💡 Tips:
@@ -140,7 +140,7 @@ Table of Contents
 
 💡 Tips:
 - Distinguish external/internal and mandatory/preferred constraints.
-- State constraints as verifiable statements (e.g., “must use FIPS 140-3 validated crypto modules”).
+- State constraints as verifiable statements (e.g., “must use FIPS 140–3 validated crypto modules”).
 - Avoid embedding design decisions unless truly binding.
 - Compliance Requirements (Section 3.4) states external obligations; this section translates them and other factors into concrete design/implementation constraints.
 
@@ -160,7 +160,7 @@ Table of Contents
 
 💡 Tips:
 - Treat assumptions as risks; link to risk register when available.
-- Keep this section updated as decisions and implementation evolves.
+- Keep this section updated as decisions and implementation evolve.
 
 ### 2.6 Apportioning of Requirements
 💬 _Allocation of requirements across components or increments._
@@ -241,7 +241,7 @@ Table of Contents
 ➥ Specify timing relationships, peak/steady-state loads, and performance targets under expected conditions. Include measurement methods, environments, and acceptance thresholds. Note any real-time constraints.
 
 💡 Tips:
-- Use percentiles and concurrency parameters (e.g., p95 latency at N RPS).
+- Use percentiles and concurrency parameters (e.g., p.95 latency at N RPS).
 - Align metrics with performance test plans.
 
 #### 3.3.2 Security
