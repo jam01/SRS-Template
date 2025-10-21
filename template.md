@@ -154,9 +154,9 @@ Table of Contents
 - Compliance Requirements (Section 3.4) states external obligations; this section translates them and other factors into concrete design/implementation constraints.
 
 📋 Checklist:
-- [] Is each constraint verifiable?
-- [] Is the source (policy/decision) linked?
-- [] Is it distinct from requirements and compliance?
+- [ ] Is each constraint verifiable?
+- [ ] Is the source (policy/decision) linked?
+- [ ] Is it distinct from requirements and compliance?
 
 ### 2.4 User Characteristics
 💬 _Defines the user groups and the attributes that affect requirements._
@@ -252,9 +252,9 @@ Requirement Format
 - Include edge cases and negative scenarios for completeness.
 
 📋 Checklist:
-- [] Each requirement uses “shall” and is testable?
-- [] Includes Acceptance Criteria and Verification Method?
-- [] Edge cases and error paths covered?
+- [ ] Each requirement uses “shall” and is testable?
+- [ ] Includes Acceptance Criteria and Verification Method?
+- [ ] Edge cases and error paths covered?
 
 ### 3.3 Quality of Service
 💬 _Quality attributes that constrain or qualify functional behavior._
