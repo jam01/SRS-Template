@@ -142,7 +142,14 @@ Table of Contents
 - Distinguish external/internal and mandatory/preferred constraints.
 - State constraints as verifiable statements (e.g., “must use FIPS 140–3 validated crypto modules”).
 - Avoid embedding design decisions unless truly binding.
+
+📝 Note: 
 - Compliance Requirements (Section 3.4) states external obligations; this section translates them and other factors into concrete design/implementation constraints.
+
+📋 Checklist:
+- [] Is each constraint verifiable?
+- [] Is the source (policy/decision) linked?
+- [] Is it distinct from requirements and compliance?
 
 ### 2.4 User Characteristics
 💬 _Defines the user groups and the attributes that affect requirements._
@@ -159,7 +166,7 @@ Table of Contents
 ➥ List assumptions about environment, hardware, usage patterns, third-party components/services, and organizational support. List dependencies on external systems, libraries, or teams. For each, indicate potential impact if proven false.
 
 💡 Tips:
-- Treat assumptions as risks; link to risk register when available.
+- Treat assumptions as risks; link to risk register with owner and mitigation when available.
 - Keep this section updated as decisions and implementation evolve.
 
 ### 2.6 Apportioning of Requirements
@@ -175,6 +182,17 @@ Table of Contents
 💬 _This section specifies **verifiable** requirements of the software product to enable design and testing._
 
 ➥ State requirements to a level of detail sufficient for design and verification. Use unique identifiers, consistent keywords (shall/should/may), and clear conditions. Describe inputs, processing in response, and outputs where applicable.
+
+📃 Template:
+```text
+Requirement Format
+- ID: REQ-FUNC-001
+- Statement: The system shall …
+- Rationale: …
+- Acceptance Criteria: …
+- Verification Method: test | analysis | inspection | demo
+- Trace: Use Case UC-01; Risks R-12; ADR-0003
+```
 
 💡 Tips:
 - Make each requirement testable and unambiguous.
@@ -226,6 +244,11 @@ Table of Contents
 - Avoid design details; focus on behavior and outcomes.
 - Include edge cases and negative scenarios for completeness.
 
+📋 Checklist:
+- [] Each requirement uses “shall” and is testable?
+- [] Includes Acceptance Criteria and Verification Method?
+- [] Edge cases and error paths covered?
+
 ### 3.3 Quality of Service
 💬 _Quality attributes that constrain or qualify functional behavior._
 
@@ -234,6 +257,11 @@ Table of Contents
 💡 Tips:
 - When a quality applies only to a subset of functions, reference the related requirement IDs.
 - Provide rationale when targets affect cost/complexity to aid trade-off decisions.
+
+📝 Examples:
+- Performance: p95 latency ≤ 200 ms at 500 RPS with 10 concurrent tenants in staging-like env.
+- Availability: Monthly availability ≥ 99.9% excluding announced maintenance (≤ 2 hrs/month).
+- Security: All data at rest encrypted with AES-256; in transit TLS 1.3; key rotation ≤ 90 days.
 
 #### 3.3.1 Performance
 💬 _Response time, throughput, and resource usage expectations._
@@ -253,6 +281,9 @@ Table of Contents
 - State cryptographic standards and key management expectations.
 - Distinguish between mandatory controls and best practices.
 - Consider organizing into subcategories for clarity: Safety (harmful external outcomes), Confidentiality (disclose data to unauthorized parties), Privacy (private data disclosed without consent), Integrity (data modified without authorization), or Availability (authorized data or resources made available when requested).
+
+📝 Note:
+Put security controls and cryptographic requirements here (3.3.2). Place external regulatory obligations and audit rules in 3.4 and cross-reference the concrete controls here.
 
 #### 3.3.3 Reliability
 💬 _Ability to consistently perform as specified._
@@ -369,6 +400,14 @@ Table of Contents
 💬 _Describes how each requirement will be verified to provide objective evidence of compliance._
 
 ➥ Outline verification methods (test, analysis, inspection, demonstration) and indicate responsibilities and schedules for each requirement or group, preferably in a matrix paralleling Section 3. Define environments, tools, test data, acceptance criteria, and traceability to requirement IDs.
+
+Traceability (sample)
+
+| Requirement ID | Verification Method | Test/Artifact Link | Status |
+|----------------|---------------------|--------------------|--------|
+| REQ-FUNC-001   | test                | tests/UC01.md      |        |
+| REQ-SEC-003    | analysis            | threat-model.md    |        |
+
 
 💡 Tips:
 - Include both positive and negative tests and address non-functional verification (performance, security, reliability).
