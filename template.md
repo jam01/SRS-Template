@@ -525,6 +525,10 @@ Traceability (sample)
 | REQ-FUNC-001   | test                | tests/UC01.md      |        |
 | REQ-SEC-003    | analysis            | threat-model.md    |        |
 
+Requirement ID schema and traceability:
+- ID format: REQ-[AREA]-[NNN]-[VER] (optional -[VER] if versioned), where AREA ∈ {FUNC, INT, PERF, SEC, REL, AVAIL, OBS, DATA, COMP, BUILD, DIST, MAINT, REUSE, PORT, COST, DEAD, POC, CM, ML}.
+- Uniqueness: IDs must be unique and immutable; changes increment -[VER] and are recorded in Revision History.
+- Traceability: Each test artifact can reference the requirement ID.
 
 💡 Tips:
 - Include both positive and negative tests and address non-functional verification (performance, security, reliability).
