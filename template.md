@@ -127,9 +127,10 @@ Table of Contents
 ### 2.1 Product Perspective
 💬 _Places the product within a larger ecosystem or lineage._
 
-➥ Describe whether this is a new product, replacement, or member of a family. If part of a larger system, briefly explain relationships, external interfaces, and key dependencies. Provide a high-level context diagram or description of components and integrations to orient the reader.
+➥ Describe whether this is a new product, replacement, or member of a family. If part of a larger system, briefly explain relationships, external interfaces, and key dependencies. Include details on ownership, service level agreements (SLAs), and support models.
 
 💡 Tips:
+- Provide a high-level context diagram or description of components and integrations to orient the reader.
 - Keep diagrams and descriptions high-level and stable across versions.
 - Highlight upstream/downstream systems and ownership boundaries.
 
