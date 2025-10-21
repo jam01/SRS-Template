@@ -46,6 +46,13 @@ Table of Contents
     * 3.5.7 [Deadline](#357-deadline)
     * 3.5.8 [Proof of Concept](#358-proof-of-concept)
     * 3.5.9 [Change Management and Release Notes](#359-change-management-and-release-notes)
+  * 3.6 [AI/ML](#36-aiml)
+      * 3.6.1 [Model Specification](#361-model-specification)
+      * 3.6.2 [Data Management](#362-data-management)
+      * 3.6.3 [Responsible Operation](#363-responsible-operation)
+      * 3.6.4 [Ethics](#364-ethics)
+      * 3.6.5 [Human-in-the-Loop](#365-human-in-the-loop)
+      * 3.6.6 [Model Lifecycle and Operations](#366-model-lifecycle-and-operations)
 * 4 [Verification](#4-verification)
 * 5 [Appendixes](#5-appendixes)
 
@@ -215,7 +222,7 @@ Requirement Format
 
 💡 Tips:
 - Reference accessibility standards (e.g., WCAG) and platform-specific guidelines.
-- Consider organizing into subcategories for clarity: Usability/Accessibility (input/outputs and dialogs to fit user abstractions, abilities, and expectations), or Convenience.
+- Consider organizing into subcategories for clarity: Usability/Accessibility (input/outputs and dialogs to fit user abstractions, abilities, and expectations), and Convenience.
 
 #### 3.1.2 Hardware Interfaces
 💬 _Details interactions with physical devices and platforms._
@@ -281,7 +288,7 @@ Requirement Format
 💡 Tips:
 - State cryptographic standards and key management expectations.
 - Distinguish between mandatory controls and best practices.
-- Consider organizing into subcategories for clarity: Safety (harmful external outcomes), Confidentiality (disclose data to unauthorized parties), Privacy (private data disclosed without consent), Integrity (data modified without authorization), or Availability (authorized data or resources made available when requested).
+- Consider organizing into subcategories for clarity: Safety (harmful external outcomes), Confidentiality (disclose data to unauthorized parties), Privacy (private data disclosed without consent), Integrity (data modified without authorization), and Availability (authorized data or resources made available when requested).
 
 📝 Note:
 Put security controls and cryptographic requirements here (3.3.2). Place external regulatory obligations and audit rules in 3.4 and cross-reference the concrete controls here.
@@ -415,6 +422,79 @@ Put security controls and cryptographic requirements here (3.3.2). Place externa
 💬 _Controls how changes are introduced and communicated._
 
 ➥ Define change categories (breaking, additive, bugfix), approval workflow, and required artifacts (changelogs, migration guides, release notes). Specify backward/forward compatibility guarantees, client communication plans, deprecation timelines, and rollout/rollback procedures.
+
+#### 3.6 AI/ML
+💬 This section defines requirements unique to systems incorporating machine learning or data-driven components at their core. These requirements complement functional, quality, and design aspects in preceding sections but address ML-specific lifecycle, data, and ethical considerations.
+
+💡 Tips:
+- Cross-reference related sections such as 3.3.6 Data Quality and 3.4 Compliance for consistency.
+- Keep requirements measurable and verifiable, similar to functional or quality attributes elsewhere.
+
+#### 3.6.1 Model Specification
+💬 _Defines what each model is intended to do and the measurable criteria for acceptable performance._
+
+➥ Describe model(s) purpose, scope, expected behavior, key inputs and outputs, and measurable performance objectives. Note any validation datasets, benchmarks, or versioning practices used to ensure reproducibility.
+
+💡 Tips:
+- Use standard metrics (accuracy, precision, recall, F1, ROC-AUC).
+- Distinguish baseline targets from aspirational improvements and define acceptable tolerance for drift.
+
+#### 3.6.2 Data Management
+💬 _Ensures integrity, traceability, and ethical sourcing of data used in model training, validation, and operation._
+
+➥ Specify dataset origin, ownership, and consent conditions.
+
+
+Labeling processes (manual, automated, crowdsourced) and quality controls
+Data lineage, versioning, and reproducibility (training → validation → inference)
+Storage, access controls, and anonymization/pseudonymization standards
+Handling of missing, synthetic, or augmented data
+
+💡 Tips:
+- Capture dataset (training, validation, auditing) freshness, retention, and deletion schedules.
+- Define audit requirements for dataset updates and labeling procedures.
+- Specify auditability for labeling and data updates to maintain traceability.
+
+
+#### 3.6.3 Responsible Operation
+💬 _Ensure that the AI system operates safely, predictably, and within approved boundaries._
+
+➥ Specify how the system validates inputs, filters or constrains outputs, and limits available actions to prevent harm, misuse, or unintended consequences. Include mechanisms to detect and respond to malicious inputs or unsafe operational conditions.
+
+💡 Tips:
+- Guardrails apply across input, output, and action layers.
+- Include protections against prompt or payload injection, unsafe content, or overreach of model capabilities.
+- Define escalation, logging, and rollback procedures when safety constraints are triggered.
+- Cross-reference 3.3.2 Security for system-level protection and 3.6.4 Ethics for normative behavioral expectations.
+
+#### 3.6.4 Ethics
+💬 _Addresses fairness, transparency, and accountability in model behavior and outcomes._
+
+➥ Define how ethical considerations will be identified, measured, and managed throughout development and operation. Include fairness objectives, explainability expectations, and documentation or review requirements.
+
+💡 Tips:
+- Use fairness metrics appropriate to context (e.g., demographic parity, equal opportunity).
+- Consider organizing into subcategories for clarity: Fairness (societal bias in outcomes), Interpretability (can inspect the model and understand outputs), and Explainability (can explain an output for a given input).
+- Coordinate with 3.6.3 Responsible Operation for enforcement mechanisms and 3.6.5 Human-in-the-Loop for human oversight.
+
+#### 3.6.5 Human-in-the-Loop
+💬 _Specifies the role of human oversight in decisions influenced or made by machine learning models._
+
+➥ Describe where and how human review, approval, or intervention is required. Clarify escalation paths, feedback mechanisms, traceability, and auditability of human actions.
+
+💡 Tips:
+- Clarify latency or throughput expectations for human review loops.
+- Link to applicable roles defined in 2.4 User Characteristics.
+
+#### 3.6.6 Model Lifecycle and Operations
+💬 _Defines requirements for deploying, monitoring, retraining, and retiring models in production._
+
+➥ Outline how models transition from development to production, how their performance and data quality are monitored, and how retraining or rollback is triggered and managed. Include expectations for versioning and archival.
+
+💡 Tips:
+- Define measurable drift thresholds (e.g., “alert if F1 score drops by >5% from baseline”).
+- Record all retraining and promotion events in change logs (see 3.5.9 Change Management).
+- Specify observability metrics (see 3.3.5 Observability) for live models.
 
 ## 4. Verification
 💬 _Describes how each requirement will be verified to provide objective evidence of compliance._
