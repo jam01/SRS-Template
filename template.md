@@ -38,14 +38,15 @@ Table of Contents
   * 3.4 [Compliance](#34-compliance)
   * 3.5 [Design and Implementation](#35-design-and-implementation)
     * 3.5.1 [Installation](#351-installation)
-    * 3.5.2 [Distribution](#352-distribution)
-    * 3.5.3 [Maintainability](#353-maintainability)
-    * 3.5.4 [Reusability](#354-reusability)
-    * 3.5.5 [Portability](#355-portability)
-    * 3.5.6 [Cost](#356-cost)
-    * 3.5.7 [Deadline](#357-deadline)
-    * 3.5.8 [Proof of Concept](#358-proof-of-concept)
-    * 3.5.9 [Change Management and Release Notes](#359-change-management-and-release-notes)
+    * 3.5.2 [Build and Delivery](#352-build-and-delivery)
+    * 3.5.3 [Distribution](#353-distribution)
+    * 3.5.4 [Maintainability](#354-maintainability)
+    * 3.5.5 [Reusability](#355-reusability)
+    * 3.5.6 [Portability](#356-portability)
+    * 3.5.7 [Cost](#357-cost)
+    * 3.5.8 [Deadline](#358-deadline)
+    * 3.5.9 [Proof of Concept](#359-proof-of-concept)
+    * 3.5.10 [Change Management and Release Notes](#3510-change-management-and-release-notes)
   * 3.6 [AI/ML](#36-aiml)
       * 3.6.1 [Model Specification](#361-model-specification)
       * 3.6.2 [Data Management](#362-data-management)
@@ -315,7 +316,7 @@ Place all technical and operational security controls here (3.3.2). Use 3.4 for 
 #### 3.3.5 Observability
 💬 _Ability to understand system state and behavior in production through telemetry._
 
-➥ Define requirements for logs, metrics, traces, and profiling: events/fields, cardinality limits, sampling, retention, and privacy/PII handling in telemetry. Specify standard labels (e.g., service, version, tenant), correlation/trace IDs propagation, and redaction policies. State SLO-aligned alert rules, dashboards, and ownership. Avoid maintenance-process details (those belong in 3.5.3 Maintainability).
+➥ Define requirements for logs, metrics, traces, and profiling: events/fields, cardinality limits, sampling, retention, and privacy/PII handling in telemetry. Specify standard labels (e.g., service, version, tenant), correlation/trace IDs propagation, and redaction policies. State SLO-aligned alert rules, dashboards, and ownership. Avoid maintenance-process details (those belong in 3.5.4 Maintainability).
 
 💡 Tips:
 - Make telemetry schemas/versioning explicit and testable.
@@ -346,14 +347,23 @@ Place all technical and operational security controls here (3.3.2). Use 3.4 for 
 #### 3.5.1 Installation
 💬 _Ensures the software runs smoothly in its target environments._
 
-➥ Define supported platforms/environments, prerequisites, installation methods, configuration and delivery management, and rollback/uninstall requirements.
+➥ Define supported platforms/environments, prerequisites, installation methods, environment configuration (e.g., env vars, secrets), and rollback/uninstall procedures.
 
 💡 Tips:
-- Detail automation expectations (e.g., continuous delivery, IaC, installer scripts, container images).
+- Detail automation expectations (e.g., IaC, installer scripts, container images).
 - Specify environment parity requirements for dev/stage/prod.
 - Provide runbooks for scale-out/in and emergency capacity boosts.
 
-#### 3.5.2 Distribution
+#### 3.5.2 Build and Delivery
+💬 _Defines the controls for building, packaging, and delivering software artifacts to ensure integrity, traceability, and reproducibility._
+
+➥ Define how source code is transformed into deployable artifacts and moved through environments. Describe expectations for build reproducibility, dependency management, licensing, configuration management, artifact verification, and release promotion. Include how controls ensure that all delivered artifacts are verifiable, approved, and protected from tampering.
+
+💡 Tips:
+- Outline promotion stages and required verification gates or approvals.
+- Cross-reference related sections such as 3.5.1 Installation and 3.5.10 Change Management and Release Notes for environment setup, versioning, and release traceability.
+
+#### 3.5.3 Distribution
 💬 _Addresses geographically or organizationally distributed deployments, data, and devices._
 
 ➥ Specify deployment topologies, data distribution/replication approaches, and constraints imposed by organizational or network structure.
@@ -363,7 +373,7 @@ Place all technical and operational security controls here (3.3.2). Use 3.4 for 
 - Note data residency and locality requirements.
 - Clarify update and synchronization strategies for distributed nodes.
 
-#### 3.5.3 Maintainability
+#### 3.5.4 Maintainability
 💬 _Attributes that make the software easier to modify, fix, and evolve._
 
 ➥ Define expectations for modularity, interfaces, coding standards, observability, documentation, and technical debt management. Avoid listing general “good practices” unless they are required and verifiable.
@@ -373,7 +383,7 @@ Place all technical and operational security controls here (3.3.2). Use 3.4 for 
 - State maximum acceptable complexity or coupling if relevant.
 - Include measurable indicators when possible (e.g., maximum defect resolution time).
 
-#### 3.5.4 Reusability
+#### 3.5.5 Reusability
 💬 _Encourages leveraging components across products or contexts when appropriate._
 
 ➥ Identify components intended for reuse and any constraints on their dependencies or technology choices. Specify modularization, API stability, packaging, and documentation to enable reuse.
@@ -382,7 +392,7 @@ Place all technical and operational security controls here (3.3.2). Use 3.4 for 
 - Align with organization’s shared libraries or platform standards.
 - Define versioning and deprecation policies for reusable components.
 
-#### 3.5.5 Portability
+#### 3.5.6 Portability
 💬 _Ability to run on multiple platforms or environments with minimal changes._
 
 ➥ Specify supported operating systems, hardware architectures, cloud providers, or container runtimes. Define abstraction layers, configuration policies, and externalization of environment-specific settings.
@@ -391,7 +401,7 @@ Place all technical and operational security controls here (3.3.2). Use 3.4 for 
 - Identify prohibited platform-specific dependencies.
 - Include data and configuration migration requirements when moving platforms.
 
-#### 3.5.6 Cost
+#### 3.5.7 Cost
 💬 _Financial considerations or cost targets._
 
 ➥ State budgetary limits, cost-per-transaction targets, licensing constraints, or cloud spend envelopes that influence design decisions.
@@ -401,7 +411,7 @@ Place all technical and operational security controls here (3.3.2). Use 3.4 for 
 - Link to a cost model or TCO assumptions where available.
 - Note variable vs. fixed cost expectations impacting scaling strategies.
 
-#### 3.5.7 Deadline
+#### 3.5.8 Deadline
 💬 _Schedule expectations that affect scope and prioritization._
 
 ➥ Specify key milestones, delivery dates, or phases/increments. Indicate dependencies between milestones and required readiness criteria.
@@ -410,7 +420,7 @@ Place all technical and operational security controls here (3.3.2). Use 3.4 for 
 - Align with organizational planning cycles and external commitments.
 - Use deadlines to guide apportioning of requirements (Section 2.6).
 
-#### 3.5.8 Proof of Concept
+#### 3.5.9 Proof of Concept
 💬 _Validates feasibility and de-risks critical assumptions before full-scale delivery._
 
 ➥ Define the objectives, scope, success criteria, and timebox for any POCs. Describe what will be validated (technical, usability, performance) and how results will influence requirements or design.
@@ -419,7 +429,7 @@ Place all technical and operational security controls here (3.3.2). Use 3.4 for 
 - Keep POCs narrowly focused and measurable. Focus on validation goals, not implementation details.
 - Document learnings and decisions to update relevant sections.
 
-#### 3.5.9 Change Management and Release Notes
+#### 3.5.10 Change Management and Release Notes
 💬 _Controls how changes are introduced and communicated._
 
 ➥ Define change categories (breaking, additive, bugfix), approval workflow, and required artifacts (changelogs, evaluation summaries, migration guides, release notes). Specify backward/forward compatibility guarantees, client communication plans, deprecation timelines, and rollout/rollback procedures.
@@ -494,7 +504,7 @@ Handling of missing, synthetic, or augmented data
 
 💡 Tips:
 - Define measurable drift thresholds (e.g., “alert if F1 score drops by >5% from baseline”).
-- Record all retraining and promotion events in change logs (see 3.5.9 Change Management).
+- Record all retraining and promotion events in change logs (see 3.5.10 Change Management).
 - Specify observability metrics (see 3.3.5 Observability) for live models.
 
 ## 4. Verification
