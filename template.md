@@ -35,6 +35,8 @@ Table of Contents
     * 3.3.2 [Security](#332-security)
     * 3.3.3 [Reliability](#333-reliability)
     * 3.3.4 [Availability](#334-availability)
+    * 3.3.5 [Observability](#335-observability)
+    * 3.3.6 [Data Quality](#336-data-quality)
   * 3.4 [Compliance](#34-compliance)
   * 3.5 [Design and Implementation](#35-design-and-implementation)
     * 3.5.1 [Installation](#351-installation)
@@ -50,7 +52,7 @@ Table of Contents
   * 3.6 [AI/ML](#36-aiml)
       * 3.6.1 [Model Specification](#361-model-specification)
       * 3.6.2 [Data Management](#362-data-management)
-      * 3.6.3 [Responsible Operation](#363-responsible-operation)
+      * 3.6.3 [Guardrails](#363-guardrails)
       * 3.6.4 [Ethics](#364-ethics)
       * 3.6.5 [Human-in-the-Loop](#365-human-in-the-loop)
       * 3.6.6 [Model Lifecycle and Operations](#366-model-lifecycle-and-operations)
@@ -280,20 +282,24 @@ Requirement Format
 💡 Tips:
 - Use percentiles and concurrency parameters (e.g., p.95 latency at N RPS).
 - Align metrics with performance test plans.
+- Include scalability targets (e.g., linear scaling up to X instances; autoscale within Y minutes) and capacity planning assumptions.
 - Consider organizing into subcategories for clarity: Time (latency, throughput, etc.) and Space (memory, storage, bandwidth, etc.).
 
 #### 3.3.2 Security
 💬 _Defines the protection of data, identities, and operations._
 
-➥ Define authentication, authorization, data protection (in transit/at rest), auditing, and privacy requirements. Reference relevant policies/regulations (e.g., ISO 27001, SOC 2, HIPAA, GDPR) and required certifications. Include secure defaults and incident response requirements where applicable. Address both abuse or misuse of authorized functionality and external attack attempts (e.g., injection, data exfiltration, or service compromise).
+➥ Define authentication, authorization, data protection (in transit/at rest), auditing, and privacy requirements. Reference relevant policies/regulations (e.g., ISO 27001, SOC 2, HIPAA, GDPR) and required certifications. Address abuse/misuse and external attacks (e.g., injection, data exfiltration, or service compromise), and include secure defaults and incident response requirements
 
 💡 Tips:
 - State cryptographic standards and key management expectations.
-- Distinguish between mandatory controls and best practices.
+- Distinguish mandatory controls and recommended practices.
 - Consider organizing into subcategories for clarity: Safety (harmful external outcomes), Confidentiality (disclose data to unauthorized parties), Privacy (private data disclosed without consent), Integrity (data modified without authorization), and Availability (authorized data or resources made available when requested).
 
 📝 Note:
-Place all technical and operational security controls here (3.3.2). Use 3.4 for regulatory or contractual obligations and audit evidence, 3.1 for interface-level validation and secure communication protocols, and 3.6 for AI/ML-specific runtime protections and data governance requirements, while cross-referencing concrete controls in this section.
+Place all technical and operational security controls here and cross-reference concrete controls back here (3.3.2) to avoid duplication;
+- Use 3.4 Compliance for regulatory/contractual obligations and audit evidence.
+- Use 3.1 External Interfaces for interface-level validation and secure protocols.
+- Use 3.6 AI/ML for model-specific runtime protections and data governance.
 
 #### 3.3.3 Reliability
 💬 _Ability to consistently perform as specified._
@@ -310,17 +316,19 @@ Place all technical and operational security controls here (3.3.2). Use 3.4 for 
 ➥ Define availability targets (e.g., 99.9%), maintenance windows, and mechanisms like checkpointing, recovery, and restart. Include geographical/zone redundancy if applicable.
 
 💡 Tips:
-- Express availability in terms meaningful to users (e.g., downtime per month).
+- Express availability in terms meaningful to users (e.g., downtime per month) and tie to SLAs/SLOs.
+- Capture scale-out/in behavior affecting availability (e.g., max failover time, quorum constraints).
 - Coordinate with SLOs/SLAs and incident response processes.
 
 #### 3.3.5 Observability
 💬 _Ability to understand system state and behavior in production through telemetry._
 
-➥ Define requirements for logs, metrics, traces, and profiling: events/fields, cardinality limits, sampling, retention, and privacy/PII handling in telemetry. Specify standard labels (e.g., service, version, tenant), correlation/trace IDs propagation, and redaction policies. State SLO-aligned alert rules, dashboards, and ownership. Avoid maintenance-process details (those belong in 3.5.4 Maintainability).
+➥ Define requirements for logs, metrics, traces, and profiling: events/fields, cardinality limits, sampling, retention, and privacy/PII handling in telemetry. Specify standard labels (e.g., service, version, tenant), correlation/trace IDs propagation, and redaction policies. State SLO-aligned alert rules, dashboards, and ownership.
 
 💡 Tips:
 - Make telemetry schemas/versioning explicit and testable.
 - Specify budgets for log volume and metrics cardinality to control cost.
+- Avoid maintenance-process details (keep runbooks and on-call policies in 3.5.4 Maintainability).
 
 #### 3.3.6 Data Quality
 💬 _Expectations for correctness and fitness of data for use._
@@ -352,7 +360,7 @@ Place all technical and operational security controls here (3.3.2). Use 3.4 for 
 💡 Tips:
 - Detail automation expectations (e.g., IaC, installer scripts, container images).
 - Specify environment parity requirements for dev/stage/prod.
-- Provide runbooks for scale-out/in and emergency capacity boosts.
+- Keep scaling mechanics (topology, multi-region) in 3.5.3 Distribution; keep scaling targets in 3.3 QoS.
 
 #### 3.5.2 Build and Delivery
 💬 _Defines the controls for building, packaging, and delivering software artifacts to ensure integrity, traceability, and reproducibility._
@@ -361,7 +369,8 @@ Place all technical and operational security controls here (3.3.2). Use 3.4 for 
 
 💡 Tips:
 - Outline promotion stages and required verification gates or approvals.
-- Cross-reference related sections such as 3.5.1 Installation and 3.5.10 Change Management and Release Notes for environment setup, versioning, and release traceability.
+- Cross-reference 3.5.1 Installation and 3.5.10 Change Management and Release Notes for environment setup, versioning, and release traceability.
+- Avoid operational topology details (those belong in 3.5.3 Distribution).
 
 #### 3.5.3 Distribution
 💬 _Addresses geographically or organizationally distributed deployments, data, and devices._
@@ -369,16 +378,18 @@ Place all technical and operational security controls here (3.3.2). Use 3.4 for 
 ➥ Specify deployment topologies, data distribution/replication approaches, and constraints imposed by organizational or network structure.
 
 💡 Tips:
-- Include geographic or network constraints.
+- Include geographic or network constraints and multi-region/multi-tenant layouts.
 - Note data residency and locality requirements.
-- Clarify update and synchronization strategies for distributed nodes.
+- Provide runbooks for scale-out/in and emergency capacity boosts.
+- Clarify update and synchronization strategies for distributed nodes and scale-out patterns.
 
 #### 3.5.4 Maintainability
 💬 _Attributes that make the software easier to modify, fix, and evolve._
 
-➥ Define expectations for modularity, interfaces, coding standards, observability, documentation, and technical debt management. Avoid listing general “good practices” unless they are required and verifiable.
+➥ Define expectations for modularity, interfaces, coding standards, developer oriented observability, documentation, and technical debt management.
 
 💡 Tips:
+- State measurable indicators (e.g., defect resolution time, change failure rate, lead time).
 - Include requirements for logging, metrics, and tracing to support maintenance.
 - State maximum acceptable complexity or coupling if relevant.
 - Include measurable indicators when possible (e.g., maximum defect resolution time).
@@ -440,6 +451,7 @@ Place all technical and operational security controls here (3.3.2). Use 3.4 for 
 💡 Tips:
 - Cross-reference related sections such as 3.3.6 Data Quality and 3.4 Compliance for consistency.
 - Keep requirements measurable and verifiable, similar to functional or quality attributes elsewhere.
+- Avoid restating general security controls; reference 3.3.2 for system-level controls.
 
 #### 3.6.1 Model Specification
 💬 _Defines what each model is intended to do and the measurable criteria for acceptable performance._
@@ -453,30 +465,23 @@ Place all technical and operational security controls here (3.3.2). Use 3.4 for 
 #### 3.6.2 Data Management
 💬 _Ensures integrity, traceability, and ethical sourcing of data used in model training, validation, and operation._
 
-➥ Specify dataset origin, ownership, and consent conditions.
-
-
-Labeling processes (manual, automated, crowdsourced) and quality controls
-Data lineage, versioning, and reproducibility (training → validation → inference)
-Storage, access controls, and anonymization/pseudonymization standards
-Handling of missing, synthetic, or augmented data
+➥ Specify dataset origin, ownership, consent conditions; labeling processes and quality controls; data lineage, versioning, and reproducibility (training → validation → inference); storage, access controls, and anonymization/pseudonymization standards; handling of missing, synthetic, or augmented data.
 
 💡 Tips:
 - Capture dataset (training, validation, auditing) freshness, retention, and deletion schedules.
 - Define audit requirements for dataset updates and labeling procedures.
 - Specify auditability for labeling and data updates to maintain traceability.
 
-
-#### 3.6.3 Responsible Operation
+#### 3.6.3 Guardrails
 💬 _Ensure that the AI system operates safely, predictably, and within approved boundaries._
 
 ➥ Specify how the system validates inputs, filters or constrains outputs, and limits available actions to prevent harm, misuse, or unintended consequences. Include mechanisms to detect and respond to malicious inputs or unsafe operational conditions.
 
 💡 Tips:
-- Guardrails apply across input, output, and action layers.
-- Include protections against prompt or payload injection, unsafe content, or overreach of model capabilities.
+- Treat “guardrails” across input, output, and action layers.
+- Include protections against prompt/payload injection, unsafe content, or capability overreach.
 - Define escalation, logging, and rollback procedures when safety constraints are triggered.
-- Cross-reference 3.3.2 Security for system-level protection and 3.6.4 Ethics for normative behavioral expectations.
+- Cross-reference 3.3.2 Security for system-level protections and 3.6.4 Ethics for normative expectations.
 
 #### 3.6.4 Ethics
 💬 _Addresses fairness, transparency, and accountability in model behavior and outcomes._
