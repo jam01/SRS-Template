@@ -48,7 +48,7 @@ Table of Contents
     * 3.5.7 [Cost](#357-cost)
     * 3.5.8 [Deadline](#358-deadline)
     * 3.5.9 [Proof of Concept](#359-proof-of-concept)
-    * 3.5.10 [Change Management and Release Notes](#3510-change-management-and-release-notes)
+    * 3.5.10 [Change Management](#3510-change-management)
   * 3.6 [AI/ML](#36-aiml)
       * 3.6.1 [Model Specification](#361-model-specification)
       * 3.6.2 [Data Management](#362-data-management)
@@ -441,7 +441,7 @@ Place all technical and operational security controls here and cross-reference c
 - Keep POCs narrowly focused and measurable. Focus on validation goals, not implementation details.
 - Document learnings and decisions to update relevant sections.
 
-#### 3.5.10 Change Management and Release Notes
+#### 3.5.10 Change Management
 💬 _Controls how changes are introduced and communicated._
 
 ➥ Define change categories (breaking, additive, bugfix), approval workflow, and required artifacts (changelogs, evaluation summaries, migration guides, release notes). Specify backward/forward compatibility guarantees, client communication plans, deprecation timelines, and rollout/rollback procedures.
