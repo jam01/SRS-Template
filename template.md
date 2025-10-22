@@ -194,16 +194,20 @@ Table of Contents
 
 ➥ State requirements to a level of detail sufficient for design and verification. Use unique identifiers, consistent keywords (shall/should/may), and clear conditions. Describe inputs, processing in response, and outputs where applicable.
 
-📃 Template:
+📃 Template (applies to all requirements):
 ```text
 Requirement Format
 - ID: REQ-FUNC-001
 - Statement: The system shall …
 - Rationale: …
 - Acceptance Criteria: …
-- Verification Method: test | analysis | inspection | demo
 - Trace: Use Case UC-01; Risks R-12; ADR-0003
 ```
+
+Requirement ID schema and traceability:
+- ID format: REQ-[AREA]-[NNN]-[VER] (optional -[VER] if versioned), where AREA ∈ {FUNC, INT, PERF, SEC, REL, AVAIL, OBS, DATA, COMP, BUILD, DIST, MAINT, REUSE, PORT, COST, DEAD, POC, CM, ML}.
+- Uniqueness: IDs must be unique and immutable; changes increment -[VER] and are recorded in Revision History.
+- Traceability: Each test artifact can reference the requirement ID.
 
 💡 Tips:
 - Make each requirement testable and unambiguous.
@@ -518,17 +522,10 @@ Place all technical and operational security controls here and cross-reference c
 
 ➥ Outline verification methods (test, canary metrics, analysis, inspection, demonstration) and indicate responsibilities and schedules for each requirement or group, preferably in a matrix paralleling Section 3. Define environments, tools, test data, acceptance criteria, and traceability to requirement IDs.
 
-Traceability (sample)
-
 | Requirement ID | Verification Method | Test/Artifact Link | Status |
 |----------------|---------------------|--------------------|--------|
 | REQ-FUNC-001   | test                | tests/UC01.md      |        |
 | REQ-SEC-003    | analysis            | threat-model.md    |        |
-
-Requirement ID schema and traceability:
-- ID format: REQ-[AREA]-[NNN]-[VER] (optional -[VER] if versioned), where AREA ∈ {FUNC, INT, PERF, SEC, REL, AVAIL, OBS, DATA, COMP, BUILD, DIST, MAINT, REUSE, PORT, COST, DEAD, POC, CM, ML}.
-- Uniqueness: IDs must be unique and immutable; changes increment -[VER] and are recorded in Revision History.
-- Traceability: Each test artifact can reference the requirement ID.
 
 💡 Tips:
 - Include both positive and negative tests and address non-functional verification (performance, security, reliability).
