@@ -74,4 +74,6 @@ Designed to be:
 
 ## License
 
-This template is provided as-is. Adapt and extend to meet your organization’s standards and regulatory needs.
+This template is dedicated to the public domain under the [Creative Commons Zero v1.0 Universal (CC0 1.0)](https://creativecommons.org/publicdomain/zero/1.0/) license.
+
+You can copy, modify, distribute, and use the work, even for commercial purposes, without asking for permission.
