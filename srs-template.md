@@ -4,7 +4,7 @@
 Version 0.1  
 Prepared by {{author}}  
 {{organization}}  
-{{date_modified}}  
+{{date_modified}}
 
 💬 _Align `version` with semantic or calendar versioning and keep this metadata accurate. Tie Version to the Revision History below and your VCS tag/release. Include the legal entity in {{organization}} if different from the technical team._
 
@@ -12,55 +12,55 @@ Prepared by {{author}}
 <!-- TOC -->
 * [Revision History](#revision-history)
 * [1. Introduction](#1-introduction)
-  * [1.1 Document Purpose](#11-document-purpose)
-  * [1.2 Product Scope](#12-product-scope)
-  * [1.3 Definitions, Acronyms, and Abbreviations](#13-definitions-acronyms-and-abbreviations)
-  * [1.4 References](#14-references)
-  * [1.5 Document Overview](#15-document-overview)
+    * [1.1 Document Purpose](#11-document-purpose)
+    * [1.2 Product Scope](#12-product-scope)
+    * [1.3 Definitions, Acronyms, and Abbreviations](#13-definitions-acronyms-and-abbreviations)
+    * [1.4 References](#14-references)
+    * [1.5 Document Overview](#15-document-overview)
 * [2. Product Overview](#2-product-overview)
-  * [2.1 Product Perspective](#21-product-perspective)
-  * [2.2 Product Functions](#22-product-functions)
-  * [2.3 Product Constraints](#23-product-constraints)
-  * [2.4 User Characteristics](#24-user-characteristics)
-  * [2.5 Assumptions and Dependencies](#25-assumptions-and-dependencies)
-  * [2.6 Apportioning of Requirements](#26-apportioning-of-requirements)
+    * [2.1 Product Perspective](#21-product-perspective)
+    * [2.2 Product Functions](#22-product-functions)
+    * [2.3 Product Constraints](#23-product-constraints)
+    * [2.4 User Characteristics](#24-user-characteristics)
+    * [2.5 Assumptions and Dependencies](#25-assumptions-and-dependencies)
+    * [2.6 Apportioning of Requirements](#26-apportioning-of-requirements)
 * [3. Requirements](#3-requirements)
-  * [3.1 External Interfaces](#31-external-interfaces)
-    * [3.1.1 User Interfaces](#311-user-interfaces)
-    * [3.1.2 Hardware Interfaces](#312-hardware-interfaces)
-    * [3.1.3 Software Interfaces](#313-software-interfaces)
-  * [3.2 Functional](#32-functional)
-  * [3.3 Quality of Service](#33-quality-of-service)
-    * [3.3.1 Performance](#331-performance)
-    * [3.3.2 Security](#332-security)
-    * [3.3.3 Reliability](#333-reliability)
-    * [3.3.4 Availability](#334-availability)
-    * [3.3.5 Observability](#335-observability)
-    * [3.3.6 Data Quality](#336-data-quality)
-  * [3.4 Compliance](#34-compliance)
-  * [3.5 Design and Implementation](#35-design-and-implementation)
-    * [3.5.1 Installation](#351-installation)
-    * [3.5.2 Build and Delivery](#352-build-and-delivery)
-    * [3.5.3 Distribution](#353-distribution)
-    * [3.5.4 Maintainability](#354-maintainability)
-    * [3.5.5 Reusability](#355-reusability)
-    * [3.5.6 Portability](#356-portability)
-    * [3.5.7 Cost](#357-cost)
-    * [3.5.8 Deadline](#358-deadline)
-    * [3.5.9 Proof of Concept](#359-proof-of-concept)
-    * [3.5.10 Change Management](#3510-change-management)
-  * [3.6 AI/ML](#36-aiml)
-    * [3.6.1 Model Specification](#361-model-specification)
-    * [3.6.2 Data Management](#362-data-management)
-    * [3.6.3 Guardrails](#363-guardrails)
-    * [3.6.4 Ethics](#364-ethics)
-    * [3.6.5 Human-in-the-Loop](#365-human-in-the-loop)
-    * [3.6.6 Model Lifecycle and Operations](#366-model-lifecycle-and-operations)
+    * [3.1 External Interfaces](#31-external-interfaces)
+        * [3.1.1 User Interfaces](#311-user-interfaces)
+        * [3.1.2 Hardware Interfaces](#312-hardware-interfaces)
+        * [3.1.3 Software Interfaces](#313-software-interfaces)
+    * [3.2 Functional](#32-functional)
+    * [3.3 Quality of Service](#33-quality-of-service)
+        * [3.3.1 Performance](#331-performance)
+        * [3.3.2 Security](#332-security)
+        * [3.3.3 Reliability](#333-reliability)
+        * [3.3.4 Availability](#334-availability)
+        * [3.3.5 Observability](#335-observability)
+    * [3.4 Compliance](#34-compliance)
+    * [3.5 Design and Implementation](#35-design-and-implementation)
+        * [3.5.1 Installation](#351-installation)
+        * [3.5.2 Build and Delivery](#352-build-and-delivery)
+        * [3.5.3 Distribution](#353-distribution)
+        * [3.5.4 Maintainability](#354-maintainability)
+        * [3.5.5 Reusability](#355-reusability)
+        * [3.5.6 Portability](#356-portability)
+        * [3.5.7 Cost](#357-cost)
+        * [3.5.8 Deadline](#358-deadline)
+        * [3.5.9 Proof of Concept](#359-proof-of-concept)
+        * [3.5.10 Change Management](#3510-change-management)
+    * [3.6 AI/ML](#36-aiml)
+        * [3.6.1 Model Specification](#361-model-specification)
+        * [3.6.2 Data Management](#362-data-management)
+        * [3.6.3 Guardrails](#363-guardrails)
+        * [3.6.4 Ethics](#364-ethics)
+        * [3.6.5 Human-in-the-Loop](#365-human-in-the-loop)
+        * [3.6.6 Model Lifecycle and Operations](#366-model-lifecycle-and-operations)
 * [4. Verification](#4-verification)
 * [5. Appendixes](#5-appendixes)
 <!-- TOC -->
 
 ## Revision History
+
 | Name | Date | Reason For Changes | Version |
 |------|------|--------------------|---------|
 |      |      |                    |         |
@@ -77,8 +77,8 @@ Prepared by {{author}}
 ➥ State the purpose of the SRS in 2–4 sentences. Name the primary audiences (e.g., product, engineering, QA, security, compliance, operations) and how they use it across planning, design, testing, and acceptance. Emphasize that this document defines what the system must do (requirements), not how it will be built. Reference related documents only when essential (e.g., vision/scope, architecture).
 
 💡 Tips:
-* Keep to 2–4 sentences; defer specifics to later sections. Emphasize that the SRS defines what the system must do, not how it will do it.
-* Mention related documents (vision/scope, architecture, roadmap, contracts) if relevant.
+- Keep to 2–4 sentences; defer specifics to later sections. Emphasize that the SRS defines what the system must do, not how it will do it.
+- Mention related documents (vision/scope, architecture, roadmap, contracts) if relevant.
 
 ### 1.2 Product Scope
 💬 _Defines the software product’s purpose, boundaries, and relationship to business goals_.
@@ -86,8 +86,8 @@ Prepared by {{author}}
 ➥ Identify the product by name and version/release. In 3–5 sentences, describe its primary purpose, key capabilities, and intended outcomes. Clearly list inclusions and exclusions when this SRS covers part of a larger system. Connect capabilities to business objectives and reference a separate vision/scope document if needed.
 
 💡 Tips:
-* Focus on the “what” and “why”; save the “how” for design sections.
-* Include a simple diagram if it clarifies boundaries within a larger system.
+- Focus on the “what” and “why”; save the “how” for design sections.
+- Include a simple diagram if it clarifies boundaries within a larger system.
 
 ### 1.3 Definitions, Acronyms, and Abbreviations
 ➥ Help readers understand specialized terms and notation by providing a glossary of domain terms, acronyms, and abbreviations used in the SRS.
@@ -155,7 +155,7 @@ Prepared by {{author}}
 - State constraints as verifiable statements (e.g., “must use FIPS 140–3 validated crypto modules”).
 - Avoid embedding design decisions unless truly binding.
 
-📝 Note: 
+📝 Note:
 - Compliance Requirements (Section 3.4) states external obligations; this section translates them and other factors into concrete design/implementation constraints.
 
 📋 Checklist:
@@ -197,14 +197,13 @@ Prepared by {{author}}
 
 📃 Template (applies to all requirements):
 ```text
-Requirement Format
 - ID: REQ-FUNC-001
 - Title: Short title, representative of the requirement...
 - Statement: The system shall...
 - Rationale: ...
 - Acceptance Criteria: ...
-- Verification Method: Test / Analysis / Inspection / Demonstration / Other
-- More Information: Additional context. Links to related requirements, risk registers, design decisions, etc.
+- Verification Method: Test | Analysis | Inspection | Demonstration | Other
+- More Information: Additional context. Links to related artifacts.
 ```
 
 Requirement ID schema and traceability:
@@ -338,15 +337,6 @@ Place all technical and operational security controls here and cross-reference c
 - Specify budgets for log volume and metrics cardinality to control cost.
 - Avoid maintenance-process details (keep runbooks and on-call policies in 3.5.4 Maintainability).
 
-#### 3.3.6 Data Quality
-💬 _Expectations for correctness and fitness of data for use._
-
-➥ Define measurable targets for accuracy, completeness, consistency, timeliness, and validity. Specify validation rules, acceptable error rates, freshness SLAs, deduplication/idempotency expectations, and reconciliation processes. Include lineage, provenance, and schema evolution/versioning requirements with backward-compatibility rules.
-
-💡 Tips:
-- Link quality checks to ingestion/processing stages and recovery steps.
-- Define monitoring and reporting for quality metrics (e.g., dashboards, alerts).
-
 ### 3.4 Compliance
 💬 _Requirements derived from external standards, regulations, or contracts._
 
@@ -471,7 +461,7 @@ Place all technical and operational security controls here and cross-reference c
 - Distinguish baseline targets from aspirational improvements and define acceptable tolerance for drift.
 
 #### 3.6.2 Data Management
-💬 _Ensures integrity, traceability, and ethical sourcing of data used in model training, validation, and operation._
+💬 _Ensures integrity, traceability, and ethical lifecycle of data used in model training, validation, and operation._
 
 ➥ Specify dataset origin, ownership, consent conditions; labeling processes and quality controls; data lineage, versioning, and reproducibility (training → validation → inference); storage, access controls, and anonymization/pseudonymization standards; handling of missing, synthetic, or augmented data.
 
