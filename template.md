@@ -8,56 +8,57 @@ Prepared by {{author}}
 
 💬 _Align `version` with semantic or calendar versioning and keep this metadata accurate. Tie Version to the Revision History below and your VCS tag/release. Include the legal entity in {{organization}} if different from the technical team._
 
-Table of Contents
-=================
+## Table of Contents
+<!-- TOC -->
 * [Revision History](#revision-history)
-* 1 [Introduction](#1-introduction)
-  * 1.1 [Document Purpose](#11-document-purpose)
-  * 1.2 [Product Scope](#12-product-scope)
-  * 1.3 [Definitions, Acronyms and Abbreviations](#13-definitions-acronyms-and-abbreviations)
-  * 1.4 [References](#14-references)
-  * 1.5 [Document Overview](#15-document-overview)
-* 2 [Product Overview](#2-product-overview)
-  * 2.1 [Product Perspective](#21-product-perspective)
-  * 2.2 [Product Functions](#22-product-functions)
-  * 2.3 [Product Constraints](#23-product-constraints)
-  * 2.4 [User Characteristics](#24-user-characteristics)
-  * 2.5 [Assumptions and Dependencies](#25-assumptions-and-dependencies)
-  * 2.6 [Apportioning of Requirements](#26-apportioning-of-requirements)
-* 3 [Requirements](#3-requirements)
-  * 3.1 [External Interfaces](#31-external-interfaces)
-    * 3.1.1 [User Interfaces](#311-user-interfaces)
-    * 3.1.2 [Hardware Interfaces](#312-hardware-interfaces)
-    * 3.1.3 [Software Interfaces](#313-software-interfaces)
-  * 3.2 [Functional](#32-functional)
-  * 3.3 [Quality of Service](#33-quality-of-service)
-    * 3.3.1 [Performance](#331-performance)
-    * 3.3.2 [Security](#332-security)
-    * 3.3.3 [Reliability](#333-reliability)
-    * 3.3.4 [Availability](#334-availability)
-    * 3.3.5 [Observability](#335-observability)
-    * 3.3.6 [Data Quality](#336-data-quality)
-  * 3.4 [Compliance](#34-compliance)
-  * 3.5 [Design and Implementation](#35-design-and-implementation)
-    * 3.5.1 [Installation](#351-installation)
-    * 3.5.2 [Build and Delivery](#352-build-and-delivery)
-    * 3.5.3 [Distribution](#353-distribution)
-    * 3.5.4 [Maintainability](#354-maintainability)
-    * 3.5.5 [Reusability](#355-reusability)
-    * 3.5.6 [Portability](#356-portability)
-    * 3.5.7 [Cost](#357-cost)
-    * 3.5.8 [Deadline](#358-deadline)
-    * 3.5.9 [Proof of Concept](#359-proof-of-concept)
-    * 3.5.10 [Change Management](#3510-change-management)
-  * 3.6 [AI/ML](#36-aiml)
-      * 3.6.1 [Model Specification](#361-model-specification)
-      * 3.6.2 [Data Management](#362-data-management)
-      * 3.6.3 [Guardrails](#363-guardrails)
-      * 3.6.4 [Ethics](#364-ethics)
-      * 3.6.5 [Human-in-the-Loop](#365-human-in-the-loop)
-      * 3.6.6 [Model Lifecycle and Operations](#366-model-lifecycle-and-operations)
-* 4 [Verification](#4-verification)
-* 5 [Appendixes](#5-appendixes)
+* [1. Introduction](#1-introduction)
+  * [1.1 Document Purpose](#11-document-purpose)
+  * [1.2 Product Scope](#12-product-scope)
+  * [1.3 Definitions, Acronyms, and Abbreviations](#13-definitions-acronyms-and-abbreviations)
+  * [1.4 References](#14-references)
+  * [1.5 Document Overview](#15-document-overview)
+* [2. Product Overview](#2-product-overview)
+  * [2.1 Product Perspective](#21-product-perspective)
+  * [2.2 Product Functions](#22-product-functions)
+  * [2.3 Product Constraints](#23-product-constraints)
+  * [2.4 User Characteristics](#24-user-characteristics)
+  * [2.5 Assumptions and Dependencies](#25-assumptions-and-dependencies)
+  * [2.6 Apportioning of Requirements](#26-apportioning-of-requirements)
+* [3. Requirements](#3-requirements)
+  * [3.1 External Interfaces](#31-external-interfaces)
+    * [3.1.1 User Interfaces](#311-user-interfaces)
+    * [3.1.2 Hardware Interfaces](#312-hardware-interfaces)
+    * [3.1.3 Software Interfaces](#313-software-interfaces)
+  * [3.2 Functional](#32-functional)
+  * [3.3 Quality of Service](#33-quality-of-service)
+    * [3.3.1 Performance](#331-performance)
+    * [3.3.2 Security](#332-security)
+    * [3.3.3 Reliability](#333-reliability)
+    * [3.3.4 Availability](#334-availability)
+    * [3.3.5 Observability](#335-observability)
+    * [3.3.6 Data Quality](#336-data-quality)
+  * [3.4 Compliance](#34-compliance)
+  * [3.5 Design and Implementation](#35-design-and-implementation)
+    * [3.5.1 Installation](#351-installation)
+    * [3.5.2 Build and Delivery](#352-build-and-delivery)
+    * [3.5.3 Distribution](#353-distribution)
+    * [3.5.4 Maintainability](#354-maintainability)
+    * [3.5.5 Reusability](#355-reusability)
+    * [3.5.6 Portability](#356-portability)
+    * [3.5.7 Cost](#357-cost)
+    * [3.5.8 Deadline](#358-deadline)
+    * [3.5.9 Proof of Concept](#359-proof-of-concept)
+    * [3.5.10 Change Management](#3510-change-management)
+  * [3.6 AI/ML](#36-aiml)
+    * [3.6.1 Model Specification](#361-model-specification)
+    * [3.6.2 Data Management](#362-data-management)
+    * [3.6.3 Guardrails](#363-guardrails)
+    * [3.6.4 Ethics](#364-ethics)
+    * [3.6.5 Human-in-the-Loop](#365-human-in-the-loop)
+    * [3.6.6 Model Lifecycle and Operations](#366-model-lifecycle-and-operations)
+* [4. Verification](#4-verification)
+* [5. Appendixes](#5-appendixes)
+<!-- TOC -->
 
 ## Revision History
 | Name | Date | Reason For Changes | Version |
@@ -198,14 +199,16 @@ Table of Contents
 ```text
 Requirement Format
 - ID: REQ-FUNC-001
-- Statement: The system shall …
-- Rationale: …
-- Acceptance Criteria: …
-- Trace: Use Case UC-01; Risks R-12; ADR-0003
+- Title: Short title, representative of the requirement...
+- Statement: The system shall...
+- Rationale: ...
+- Acceptance Criteria: ...
+- Verification Method: Test / Analysis / Inspection / Demonstration / Other
+- More Information: Additional context. Links to related requirements, risk registers, design decisions, etc.
 ```
 
 Requirement ID schema and traceability:
-- ID format: REQ-[AREA]-[NNN]-[VER] (optional -[VER] if versioned), where AREA ∈ {FUNC, INT, PERF, SEC, REL, AVAIL, OBS, DATA, COMP, BUILD, DIST, MAINT, REUSE, PORT, COST, DEAD, POC, CM, ML}.
+- ID format: REQ-[AREA]-[NNN]-[VER] (optional -[VER] if versioned), where AREA ∈ {FUNC, INT, PERF, SEC, REL, AVAIL, OBS, DATA, COMP, INST, BUILD, DIST, MAINT, REUSE, PORT, COST, DEAD, POC, CM, ML}.
 - Uniqueness: IDs must be unique and immutable; changes increment -[VER] and are recorded in Revision History.
 - Traceability: Each test artifact can reference the requirement ID.
 
@@ -522,10 +525,10 @@ Place all technical and operational security controls here and cross-reference c
 
 ➥ Outline verification methods (test, canary metrics, analysis, inspection, demonstration) and indicate responsibilities and schedules for each requirement or group, preferably in a matrix paralleling Section 3. Define environments, tools, test data, acceptance criteria, and traceability to requirement IDs.
 
-| Requirement ID | Verification Method | Test/Artifact Link | Status |
-|----------------|---------------------|--------------------|--------|
-| REQ-FUNC-001   | test                | tests/UC01.md      |        |
-| REQ-SEC-003    | analysis            | threat-model.md    |        |
+| Requirement ID | Verification Method | Test/Artifact Link | Status | Evidence           |
+|----------------|---------------------|--------------------|--------|--------------------|
+| REQ-FUNC-001   | test                | tests/UC01.md      | Passed | reports/tuc01.html |
+| REQ-SEC-003    | analysis            | threat-model.md    | WIP    |                    |
 
 💡 Tips:
 - Include both positive and negative tests and address non-functional verification (performance, security, reliability).
