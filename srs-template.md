@@ -111,7 +111,7 @@ Prepared by {{author}}
 ### 1.5 Document Overview
 💬 _Brief guide to the structure of the SRS so readers can quickly find what they need._
 
-➥ Summarize what each major section covers (Product Overview, Requirements, Verification, Appendixes) and mention how updates and revision history are managed.
+➥ Summarize what each major section covers (Product Overview, Requirements, Verification, Appendixes), note any document conventions, and mention how updates and revision history are managed.
 
 💡 Tips:
 - Keep to 3–5 sentences focusing on navigation and conventions.
@@ -143,8 +143,9 @@ Prepared by {{author}}
 ➥ Describe constraints such as mandated interfaces, technology stacks, regulatory obligations, QoS baselines, hardware limitations, AI/ML model families, and organizational policies.
 
 💡 Tips:
-- Distinguish external/internal and mandatory/preferred constraints.
 - State constraints as verifiable "must" statements (e.g., “must use FIPS 140–3 validated crypto modules”).
+- Distinguish external/internal and mandatory/preferred constraints.
+- Avoid design decisions unless truly binding.
 
 📝 Note:
 Requirements (Section 3) defines verifiable system obligations—specific behaviors or qualities the system shall exhibit in order to satisfy limits described in this section.
@@ -177,7 +178,7 @@ Requirements (Section 3) defines verifiable system obligations—specific behavi
 ## 3. Requirements
 💬 _This section specifies **verifiable** requirements of the software product to enable design and testing._
 
-➥ State requirements to a level of detail sufficient for design and verification. Use unique identifiers, consistent keywords (shall/should/may), and clear conditions. Describe inputs, processing in response, and outputs where applicable. Reference the relevant constraints that the requirement addresses.
+➥ State requirements to a level of detail sufficient for design and verification. Use unique identifiers, consistent keywords (shall/should/may), and clear conditions. Describe inputs, processing in response, and outputs where applicable. Reference the relevant 2.3 Product Constraints that the requirement addresses.
 
 📃 Template (applies to **all** requirements):
 ```text
@@ -203,6 +204,9 @@ Requirement ID schema and traceability:
 
 ➥ Provide interface definitions sufficient for implementation and test.
 
+💡 Tips:
+- Use interface control documents or schemas where appropriate and reference them here.
+
 #### 3.1.1 User Interfaces
 💬 _Describes how users interact with the system at a logical level._
 
@@ -223,7 +227,7 @@ Requirement ID schema and traceability:
 #### 3.1.3 Software Interfaces
 💬 _Defines integrations with other software components and services._
 
-➥ List connected systems (name and version), required services/APIs, data items/messages exchanged, communication styles/protocols, and limit/error/timeout semantics. Reference API/SDK docs and identify shared data and ownership.
+➥ List connected systems (name and version), required services/APIs, data items/messages exchanged, communication styles/protocols, and limit/error/timeout semantics. Identify shared data and ownership.
 
 💡 Tips:
 - Capture versioning and backward compatibility policies.
@@ -290,10 +294,13 @@ Place generic security controls here (3.3.2), and cross-reference from supported
 
 ➥ Define requirements for logs, metrics, traces, and profiling: events/fields, cardinality limits, sampling, retention, and privacy/PII handling in telemetry. Specify standard labels (e.g., service, version, tenant), correlation/trace IDs propagation, and redaction policies. State SLO-aligned alert rules, dashboards, and ownership.
 
-### 3.4 Compliance
-💬 _Requirements to derived to satisfy external standards, regulations, or contracts._
+💡 Tips:
+- Avoid maintenance-process details (keep runbooks and on-call policies in 3.5.4 Maintainability).
 
-➥ Specify mandated formats, naming conventions, accounting procedures, provider/user rights and agreements, audit tracing, records retention, and reporting. For each compliance item, reference the source constraint from section 2.3 if applicable, or cite the authoritative source directly.
+### 3.4 Compliance
+💬 _Requirements derived to satisfy external standards, regulations, or contracts._
+
+➥ Specify mandated formats, naming conventions, accounting procedures, provider/user rights and agreements, licensing agreements, audit tracing, records retention, and reporting. For each compliance item, reference 2.3 Product Constraints if applicable, or cite the authoritative source directly.
 
 ### 3.5 Design and Implementation
 💬 _Constraints or mandates affecting how the solution is designed, deployed, and maintained._
@@ -427,7 +434,7 @@ Place generic security controls here (3.3.2), and cross-reference from supported
 | REQ-SEC-003    | analysis            | threat-model.md    | WIP    |                    |
 
 💡 Tips:
-- Include both positive and negative tests.
+- Include both positive and negative tests and include non-functional verification (performance, security, reliability).
 - Verification artifacts may be versioned and linked to CI/CD.
 - For AI, reference Model Cards and track eval datasets’ versions and ensure reproducibility of results.
 
