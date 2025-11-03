@@ -1,5 +1,5 @@
 ---
-status:
+status: "{draft | proposed | deferred | planned | in-progress | blocked | passed | failed | waived}"
 date:
 ---
 

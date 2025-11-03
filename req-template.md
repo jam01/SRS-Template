@@ -1,6 +1,6 @@
 ---
 # These are optional metadata elements. Feel free to remove any of them.
-status: "{planned | in-progress | blocked | passed | failed | waived}"
+status: "{draft | proposed | deferred | planned | in-progress | blocked | passed | failed | waived}"
 date: {YYYY-MM-DD when the requirement was last updated}
 ---
 

@@ -1,8 +1,8 @@
 # Markdown Software Requirements Specification (MSRS)
 
-A modern, practical markdown SRS template aligned with IEEE 830 and ISO/IEC/IEEE 29148:2011/2017. It emphasizes verifiable requirements, traceability, quality attributes, and clear separation of “what” (requirements) from “how” (design).
+A modern, practical markdown **Software Requirements Specification (SRS)** template aligned with **IEEE 830** and **ISO/IEC/IEEE 29148:2011/2017**. It emphasizes verifiable requirements, traceability, quality attributes, and clear separation of “what” (requirements) from “how” (design)—leaving that to complementary artifacts such as [Markdown Software Design Description (MSDD)](https://github.com/jam01/SDD-Template).
 
-This SRS template builds on formal standards, with the non-functional requirement organization and language based on van Lamsweerde’s Requirements Engineering taxonomy of non-functional requirements, and incorporates modern software component requirements—continuous delivery, observability, and AI/ML.
+This SRS template **builds on formal standards**, with the non-functional requirement organization and language based on van Lamsweerde’s Requirements Engineering taxonomy of non-functional requirements, and **incorporates modern software component requirements**—continuous delivery, observability, and AI/ML.
 
 Designed to be:
 - Readable, developer‑friendly, and AI‑interpretable
@@ -10,23 +10,23 @@ Designed to be:
 
 ## Highlights
 
-- Standards-aligned: IEEE 830, ISO/IEC/IEEE 29148
-- Comprehensive structure with clear, testable requirement patterns
+- **Standards-aligned:** IEEE 830, ISO/IEC/IEEE 29148
+- **Comprehensive structure** with clear, testable requirement patterns
 - Dedicated sections for Quality of Service, Compliance, and AI/ML
-- Built-in guidance, tips, and checklists for each section
-- Traceability-ready requirement ID schema and verification matrix
+- **Built-in guidance, tips, and checklists** for each section
+- **Traceability-ready** requirement ID schema and verification matrix
 - Suitable for regulated and enterprise contexts
 
 ## Who Should Use This
 
-- Product managers and business analysts defining scope and outcomes
-- Architects and engineers designing solutions from stable requirements
-- QA and SRE teams planning verification and SLAs/SLOs
-- Security, compliance, and data governance teams
+- **Product managers and business analysts** defining scope and outcomes
+- **Architects and engineers** designing solutions from stable requirements
+- **QA and SRE teams** planning verification and SLAs/SLOs
+- **Security, compliance, and data governance teams**
 
 ## Quick Start
 
-1. Copy the template file into your repository (e.g., docs/srs.md).
+1. Copy the template file into your repository (e.g., `docs/srs.md`).
 2. Fill metadata (version, author, organization, date).
 3. Complete Section 1 to establish context, glossary, references, and conventions.
 4. Draft Section 2 with product context and constraints before writing detailed requirements.
@@ -57,29 +57,27 @@ Designed to be:
 
 #### One-shot document
 
-  * Fill srs-template.md.
+  * Fill `srs-template.md`.
   * Export to PDF/HTML (e.g., pandoc) and share.
 
-
 #### Long-lived SRS in VCS
-  * Keep srs-template.md as docs/srs.md.
+  * Keep `srs-template.md` as `docs/srs.md`.
   * Incrementally add/modify requirements.
   * Export on releases for stakeholders. 
-  * Treat docs/srs.md as the source of truth.
+  * Treat `docs/srs.md` as the source of truth.
   * Keep templates available in-repo to standardize language and structure.
   * Provide the guided SRS and requirement templates to an LLM as context.
 
-
 #### Breakout files (MADR-inspired)
 
-  * Maintain an SRS plus separate requirement files under docs/requirements/.
-  * Use req-template.md or req-template-bare.md for each requirement (one file per REQ). 
+  * Maintain an SRS plus separate requirement files under `docs/requirements/`.
+  * Use `req-template.md` or `req-template-bare.md` for each requirement (one file per REQ). 
   * Link each requirement from the SRS (Section 3 index). 
   * Track verification links in SRS Section 4. 
 
 #### Requirements-only (MADR-style)
 
-  * Manage docs/requirements/*.md without a monolithic SRS.
+  * Manage `docs/requirements/*.md` without a monolithic SRS.
   * Generate a simple index or roll-up SRS as needed.
 
 ## On Requirements Engineering
@@ -90,14 +88,14 @@ In practice, the line between functional and non-functional requirements is rare
 
 #### Why Requirement Taxonomies Still Matter
 
-Even with these overlaps, maintaining a taxonomy of requirements adds structure and clarity to the requirements engineering (RE) process. Categorization helps teams articulate not only what a system must do, but also how well and under what constraints it must operate. Functional requirements typically describe concrete system behaviors, while non-functional ones define qualities that cut across features—like usability, performance, or confidentiality. This distinction also supports systematic analysis: it makes it easier to spot missing requirements, detect potential conflicts (e.g., between usability and security), and prioritize trade-offs during design and validation.
+Even with these overlaps, maintaining a taxonomy of requirements adds structure and clarity to the requirements engineering (RE) process. Categorization helps teams articulate not only what a system must do, but also how well and under what constraints it must operate. Functional requirements typically describe concrete system behaviors, while non-functional ones define qualities that cut across features—like usability, performance, or confidentiality. This distinction also supports systematic analysis: it makes it easier to spot missing requirements (e.g., is there any explainability requirement on X?), detect potential conflicts (e.g., between usability and security), and prioritize trade-offs during design and validation.
 
 For developers, QA engineers, and architects, a requirements taxonomy acts as a mental model for navigating complexity. It provides a shared vocabulary for reasoning about behavior, quality, and constraints throughout the software lifecycle—guiding not just how systems are built, but how they are tested, evaluated, and evolved.
 
 ## Related Projects
 
-- Software Design Description (SDD) [template](https://github.com/jam01/SDD-Template) (for the “how”): use alongside this SRS to capture architecture and design decisions.
-- Markdown Architecture Decision Records (MADR) [templates](https://adr.github.io/madr/) — lightweight ADRs to document significant decisions with context, alternatives, and consequences.
+* [Markdown Software Design Description (MSDD)](https://github.com/jam01/SDD-Template)
+* [Markdown Architecture Decision Records (MADR)](https://adr.github.io/madr/)
 
 ## License
 

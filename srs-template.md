@@ -24,35 +24,11 @@ Prepared by {{author}}
     * [2.6 Apportioning of Requirements](#26-apportioning-of-requirements)
 * [3. Requirements](#3-requirements)
     * [3.1 External Interfaces](#31-external-interfaces)
-        * [3.1.1 User Interfaces](#311-user-interfaces)
-        * [3.1.2 Hardware Interfaces](#312-hardware-interfaces)
-        * [3.1.3 Software Interfaces](#313-software-interfaces)
     * [3.2 Functional](#32-functional)
     * [3.3 Quality of Service](#33-quality-of-service)
-        * [3.3.1 Performance](#331-performance)
-        * [3.3.2 Security](#332-security)
-        * [3.3.3 Reliability](#333-reliability)
-        * [3.3.4 Availability](#334-availability)
-        * [3.3.5 Observability](#335-observability)
     * [3.4 Compliance](#34-compliance)
     * [3.5 Design and Implementation](#35-design-and-implementation)
-        * [3.5.1 Installation](#351-installation)
-        * [3.5.2 Build and Delivery](#352-build-and-delivery)
-        * [3.5.3 Distribution](#353-distribution)
-        * [3.5.4 Maintainability](#354-maintainability)
-        * [3.5.5 Reusability](#355-reusability)
-        * [3.5.6 Portability](#356-portability)
-        * [3.5.7 Cost](#357-cost)
-        * [3.5.8 Deadline](#358-deadline)
-        * [3.5.9 Proof of Concept](#359-proof-of-concept)
-        * [3.5.10 Change Management](#3510-change-management)
     * [3.6 AI/ML](#36-aiml)
-        * [3.6.1 Model Specification](#361-model-specification)
-        * [3.6.2 Data Management](#362-data-management)
-        * [3.6.3 Guardrails](#363-guardrails)
-        * [3.6.4 Ethics](#364-ethics)
-        * [3.6.5 Human-in-the-Loop](#365-human-in-the-loop)
-        * [3.6.6 Model Lifecycle and Operations](#366-model-lifecycle-and-operations)
 * [4. Verification](#4-verification)
 * [5. Appendixes](#5-appendixes)
 <!-- TOC -->
@@ -65,7 +41,7 @@ Prepared by {{author}}
 |      |      |                    |         |
 
 ## 1. Introduction
-💬 _Provides an overview of the entire document and orients the reader to the system being specified._
+💬 _Provides an overview of the document and orients the reader to the system being specified._
 
 ➥ Briefly summarize the SRS’s purpose, product scope, intended audience, and how the document is organized. Do not include details here; reference the relevant sections instead.
 
@@ -138,7 +114,7 @@ Prepared by {{author}}
 - Include a top-level data flow or use case diagram if helpful.
 
 ### 2.3 Product Constraints
-💬 _Defines limitations or conditions shaping design and implementation._
+💬 _Defines contextual limitations or conditions shaping design and implementation._
 
 ➥ Describe constraints such as mandated interfaces, technology stacks, regulatory obligations, QoS baselines, hardware limitations, AI/ML model families, and organizational policies.
 
@@ -181,7 +157,7 @@ Requirements (Section 3) defines verifiable system obligations—specific behavi
 ➥ State requirements to a level of detail sufficient for design and verification. Use unique identifiers, consistent keywords (shall/should/may), and clear conditions. Describe inputs, processing in response, and outputs where applicable. Reference the relevant 2.3 Product Constraints that the requirement addresses.
 
 📃 Template (applies to **all** requirements):
-```text
+```markdown
 - ID: REQ-FUNC-001
 - Title: Short title, representative of the requirement...
 - Statement: The system shall...
@@ -200,7 +176,7 @@ Requirement ID schema and traceability:
 - Make each requirement testable and unambiguous, using standard metrics and avoiding vague terms (e.g., “user-friendly,” “fast”).
 
 ### 3.1 External Interfaces
-💬 _Specifies all inputs to and outputs from the software system._
+💬 _Specifies all external inputs and outputs, covering both required and provided interfaces._
 
 ➥ Provide interface definitions sufficient for implementation and test.
 
@@ -214,7 +190,7 @@ Requirement ID schema and traceability:
 
 💡 Tips:
 - Reference accessibility standards (e.g., WCAG) and platform-specific guidelines.
-- Consider organizing into subcategories for clarity: Usability/Accessibility (input/outputs and dialogs to fit user abstractions, abilities, and expectations), and Convenience.
+- Consider organizing into subcategories for clarity: Usability/Accessibility (inputs/outputs and dialogs to fit user abstractions, abilities, and expectations), and Convenience.
 
 #### 3.1.2 Hardware Interfaces
 💬 _Details interactions with physical devices and platforms._
@@ -227,7 +203,7 @@ Requirement ID schema and traceability:
 #### 3.1.3 Software Interfaces
 💬 _Defines integrations with other software components and services._
 
-➥ List connected systems (name and version), required services/APIs, data items/messages exchanged, communication styles/protocols, and limit/error/timeout semantics. Identify shared data and ownership.
+➥ List connected systems (name and version), required or provided services/APIs, data items/messages exchanged, communication styles/protocols, and limit/error/timeout semantics. Identify shared data and ownership.
 
 💡 Tips:
 - Capture versioning and backward compatibility policies.
